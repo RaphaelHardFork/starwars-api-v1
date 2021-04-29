@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.css"
+import { useState } from 'react'
 
-function App() {
+// Import Components
+import StarWarsApp from './components/StarWarsApp'
+
+
+const App = () => {
+  const [url, setUrl] = useState('https://swapi.dev/api/planets/')
+  const [nextUrl, setNextUrl] = useState('')
+
+  const handleButtonMore = () => {
+    setUrl(nextUrl)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="display-1 text-center my-5">Les planètes de Star Wars</h1>
+      <div className="container">
+        <StarWarsApp setNextUrl={setNextUrl} url={url} />
+        <button disabled={nextUrl === null} onClick={handleButtonMore} className="btn btn-info my-5 me-2">{nextUrl !== null ? "Voir plus" : "Fin de la liste"}</button>
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
