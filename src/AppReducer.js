@@ -14,6 +14,7 @@ const dataFetchReducer = (state, action) => {
         isError: false
       }
     case 'FETCH_SUCCESS':
+      // agrandissement de la liste
       let list = []
       for (let elem of action.myData) {
         list.push(elem)
@@ -21,7 +22,16 @@ const dataFetchReducer = (state, action) => {
       for (let elem of action.payload.results) {
         list.push(elem)
       }
-      return { ...state, isLoadding: false, planetsList: list, nextUrl: action.payload.next }
+      // Problème de l'url http => https
+      let url
+      if (action.payload.next !== null) {
+        url = action.payload.next.split('')
+        url[3] = 'ps'
+        url = url.join('')
+      } else {
+        url = action.payload.next
+      }
+      return { ...state, isLoadding: false, planetsList: list, nextUrl: url }
     case 'FETCH_FAILURE':
       return { ...state, isError: true }
     case 'FETCH_END':

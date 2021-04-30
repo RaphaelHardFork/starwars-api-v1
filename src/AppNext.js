@@ -24,9 +24,18 @@ const useDataFetcher = () => {
         for (let elem of data.data.results) {
           planetsList.push(elem)
         }
+        // Problème de l'url http => https
+        let urlNext
+        if (data.data.next !== null) {
+          urlNext = data.next.split('')
+          urlNext[3] = 'ps'
+          urlNext = urlNext.join('')
+        } else {
+          urlNext = data.data.next
+        }
         // modification des variables d'état
         setplanetsList(() => planetsList)
-        setNextUrl(() => data.data.next)
+        setNextUrl(() => urlNext)
       } catch {
         setIsError(true)
       }
