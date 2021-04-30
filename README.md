@@ -44,7 +44,7 @@ On peut noter la gestion des erreurs ainsi que l'affichage du chargement :
       {isLoadding ? <h2 className="infos">Chargement...</h2> : ''}
 
 ```
-Pour voir le code complet => [App.js]() & [StarWarsApp.js]()  
+Pour voir le code complet => [App.js](https://github.com/RaphaelHardFork/starwars-api-v1/blob/main/src/App.js) & [StarWarsApp.js](https://github.com/RaphaelHardFork/starwars-api-v1/blob/main/src/components/StarWarsApp.js)  
 Pour voir si le code fonctionne, remplacer **ligne 4** le chemin à `'./App'` dans `index.js`
 ## Step 2 
 **Utilisation d'un hook personnalisé (custom hook)**  
@@ -96,7 +96,7 @@ Et enfin utilisation / appelle de notre Hook :
     doFetch(nextUrl)
   }
 ```
-Pour voir le code complet => [AppNext.js]()  
+Pour voir le code complet => [AppNext.js](https://github.com/RaphaelHardFork/starwars-api-v1/blob/main/src/AppNext.js)  
 Pour voir si le code fonctionne, remplacer **ligne 4** le chemin à `'./AppNext'` dans `index.js`
 
 ## Step 3 Utilisation de useReducer
@@ -163,4 +163,4 @@ Ainsi dans notre component App on peut initie les variables et objets d'état co
     doFetch(nextUrl)
   }
 ```
-Pour voir le code complet => [AppReducer.js]()
+Pour voir le code complet => [AppReducer.js](https://github.com/RaphaelHardFork/starwars-api-v1/blob/main/src/AppReducer.js)

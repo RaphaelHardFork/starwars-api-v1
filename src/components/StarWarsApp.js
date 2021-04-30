@@ -3,37 +3,35 @@ import axios from 'axios'
 import { planetColor } from '../style'
 
 const StarWarsApp = ({ url, setNextUrl }) => {
-  const dataFetcherHook = () => {
-    // variable d'état
-    const [planetsList, setplanetsList] = useState([])
-    const [isLoadding, setIsLoadding] = useState(false)
-    const [isError, setIsError] = useState(false)
+  // variable d'état
+  const [planetsList, setplanetsList] = useState([])
+  const [isLoadding, setIsLoadding] = useState(false)
+  const [isError, setIsError] = useState(false)
 
-    // fetch data
-    useEffect(() => {
-      const fetchData = async () => {
-        setIsLoadding(true)
-        setIsError(false)
-        try {
-          let data = await axios(url)
-          setIsLoadding(false)
-          // agrandir la liste
-          for (let elem of data.data.results) {
-            planetsList.push(elem)
-          }
-          // modification des variables d'état
-          setplanetsList(() => planetsList)
-          setNextUrl(() => data.data.next)
-        } catch {
-          setIsError(true)
-        }
+  // fetch data
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoadding(true)
+      setIsError(false)
+      try {
+        let data = await axios(url)
         setIsLoadding(false)
+        // agrandir la liste
+        for (let elem of data.data.results) {
+          planetsList.push(elem)
+        }
+        // modification des variables d'état
+        setplanetsList(() => planetsList)
+        setNextUrl(() => data.data.next)
+      } catch {
+        setIsError(true)
       }
-      fetchData()
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [url])
-    return [{ planetsList, isError, isLoadding }, setplanetsList]
-  }
+      setIsLoadding(false)
+    }
+    fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url])
+
 
   return (<div>
     {isError && <h2 className="infos">Oups... Il y a eu une erreur</h2>}
