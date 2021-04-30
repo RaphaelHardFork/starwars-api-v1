@@ -1,4 +1,6 @@
 # Star Wars API
+[Voir le site 🖖](https://starwars-api-v1.netlify.app/)  
+Par defaut le site fonctionne avec le `useReducer`
 
 ## Utilisation des hooks React 
 A l'aide de l'article de [Robin Wieruch](https://www.robinwieruch.de/react-hooks-fetch-data)
